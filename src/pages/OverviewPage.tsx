@@ -7,7 +7,8 @@ import {
   ArrowRight,
   TrendingUp,
   Eye,
-  Layers
+  Layers,
+  BarChart3
 } from 'lucide-react';
 import { StatCard } from '@/components/dashboard/StatCard';
 import { RAGIndicator } from '@/components/dashboard/RAGIndicator';
@@ -17,13 +18,14 @@ import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
 import { LiveIndicator } from '@/components/dashboard/LiveIndicator';
 import { QuickActions } from '@/components/dashboard/QuickActions';
 import { FXTransparencyLayers } from '@/components/dashboard/FXTransparencyLayers';
+import { NAFEMDashboard } from '@/components/dashboard/NAFEMDashboard';
 import { dashboardStats, monthlyTrends, transactions } from '@/data/mockData';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Link } from 'react-router-dom';
 
 export function OverviewPage() {
-  const [activeView, setActiveView] = useState<'executive' | 'transparency'>('transparency');
+  const [activeView, setActiveView] = useState<'executive' | 'transparency' | 'nafem'>('transparency');
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -53,10 +55,14 @@ export function OverviewPage() {
 
       {/* View Toggle */}
       <Tabs value={activeView} onValueChange={(v) => setActiveView(v as typeof activeView)} className="w-full">
-        <TabsList className="grid w-full grid-cols-2 lg:w-auto lg:inline-flex">
+        <TabsList className="grid w-full grid-cols-3 lg:w-auto lg:inline-flex">
           <TabsTrigger value="transparency" className="gap-2">
             <Layers size={14} />
-            FX Transparency Layers
+            FX Transparency
+          </TabsTrigger>
+          <TabsTrigger value="nafem" className="gap-2">
+            <BarChart3 size={14} />
+            Market Intelligence
           </TabsTrigger>
           <TabsTrigger value="executive" className="gap-2">
             <Eye size={14} />
@@ -220,6 +226,11 @@ export function OverviewPage() {
         {/* FX Transparency Layers Tab */}
         <TabsContent value="transparency" className="mt-6">
           <FXTransparencyLayers />
+        </TabsContent>
+
+        {/* NAFEM Market Intelligence Tab */}
+        <TabsContent value="nafem" className="mt-6">
+          <NAFEMDashboard />
         </TabsContent>
       </Tabs>
     </div>
