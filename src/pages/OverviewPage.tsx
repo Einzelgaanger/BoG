@@ -1,16 +1,21 @@
 import { 
   DollarSign, 
   Building2, 
-  GitBranch, 
-  Layers, 
+  CheckCircle,
   AlertTriangle,
-  CheckCircle
+  ArrowRight,
+  TrendingUp
 } from 'lucide-react';
 import { StatCard } from '@/components/dashboard/StatCard';
 import { RAGIndicator } from '@/components/dashboard/RAGIndicator';
 import { ChannelMixChart } from '@/components/dashboard/ChannelMixChart';
 import { TrendChart } from '@/components/dashboard/TrendChart';
-import { dashboardStats, monthlyTrends } from '@/data/mockData';
+import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
+import { LiveIndicator } from '@/components/dashboard/LiveIndicator';
+import { QuickActions } from '@/components/dashboard/QuickActions';
+import { dashboardStats, monthlyTrends, transactions } from '@/data/mockData';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 export function OverviewPage() {
   const formatCurrency = (value: number) => {
@@ -22,14 +27,21 @@ export function OverviewPage() {
     }).format(value);
   };
 
+  // Get recent transactions for the activity feed
+  const recentTransactions = transactions.slice(0, 5);
+
   return (
     <div className="space-y-8 animate-fade-in">
-      {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold text-foreground">Remittance Overview</h1>
-        <p className="text-muted-foreground mt-1">
-          Executive snapshot of Ghana's remittance inflows and regulatory oversight
-        </p>
+      {/* Header with Quick Actions */}
+      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+        <DashboardHeader
+          title="Remittance Overview"
+          subtitle="Executive snapshot of Ghana's remittance inflows and regulatory oversight"
+        />
+        <div className="flex items-center gap-3">
+          <LiveIndicator />
+          <QuickActions />
+        </div>
       </div>
 
       {/* Key Metrics Grid */}
@@ -64,7 +76,13 @@ export function OverviewPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Trend Chart */}
         <div className="lg:col-span-2 dashboard-card p-6">
-          <h3 className="module-header mb-4">Inflow Trends (6 Months)</h3>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="module-header">Inflow Trends (6 Months)</h3>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <TrendingUp size={16} className="text-success" />
+              <span>+{dashboardStats.totalInflows.change}% growth</span>
+            </div>
+          </div>
           <TrendChart data={monthlyTrends} />
         </div>
 
@@ -76,7 +94,7 @@ export function OverviewPage() {
       </div>
 
       {/* Secondary Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Settlement Split */}
         <div className="dashboard-card p-6">
           <h3 className="module-header mb-4">Settlement Distribution</h3>
@@ -97,11 +115,11 @@ export function OverviewPage() {
             </div>
             <div className="flex h-3 rounded-full overflow-hidden bg-muted mt-4">
               <div 
-                className="bg-chart-1 transition-all duration-500"
+                className="bg-chart-1 transition-all duration-700"
                 style={{ width: `${dashboardStats.settlementSplit.offshore}%` }}
               />
               <div 
-                className="bg-chart-2 transition-all duration-500"
+                className="bg-chart-2 transition-all duration-700"
                 style={{ width: `${dashboardStats.settlementSplit.onshore}%` }}
               />
             </div>
@@ -119,6 +137,43 @@ export function OverviewPage() {
             medium={dashboardStats.exceptions.medium}
             low={dashboardStats.exceptions.low}
           />
+          <Link to="/settlements">
+            <Button variant="ghost" size="sm" className="mt-4 gap-2 text-muted-foreground hover:text-foreground">
+              View all exceptions <ArrowRight size={14} />
+            </Button>
+          </Link>
+        </div>
+
+        {/* Recent Activity */}
+        <div className="dashboard-card p-6">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="module-header">Recent Activity</h3>
+            <Link to="/register">
+              <Button variant="ghost" size="sm" className="text-sm text-muted-foreground hover:text-foreground">
+                View all
+              </Button>
+            </Link>
+          </div>
+          <div className="space-y-3">
+            {recentTransactions.map((txn) => (
+              <div key={txn.id} className="flex items-center justify-between py-2 border-b border-border last:border-0">
+                <div className="flex items-center gap-3">
+                  <div className={`w-2 h-2 rounded-full ${
+                    txn.status === 'Settled' ? 'bg-success' :
+                    txn.status === 'Exception' ? 'bg-destructive' :
+                    txn.status === 'Matched' ? 'bg-info' : 'bg-warning'
+                  }`} />
+                  <div>
+                    <p className="text-sm font-medium">{txn.corridor}</p>
+                    <p className="text-xs text-muted-foreground">{txn.sendingInstitution}</p>
+                  </div>
+                </div>
+                <span className="text-sm font-medium">
+                  {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GHS', maximumFractionDigits: 0 }).format(txn.amountPaid)}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -126,12 +181,15 @@ export function OverviewPage() {
       <div className="dashboard-card p-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-3 h-3 rounded-full bg-success animate-pulse" />
-            <span className="text-sm font-medium text-muted-foreground">System Status</span>
+            <div className="relative">
+              <div className="w-3 h-3 rounded-full bg-success" />
+              <div className="absolute inset-0 w-3 h-3 rounded-full bg-success animate-ping opacity-75" />
+            </div>
+            <span className="text-sm font-medium text-muted-foreground">All Systems Operational</span>
           </div>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <span>Last data sync: 2 min ago</span>
-            <span>Reporting period: Jan 2024 Week 2</span>
+            <span className="hidden sm:inline">Reporting period: Jan 2024 Week 2</span>
           </div>
         </div>
       </div>

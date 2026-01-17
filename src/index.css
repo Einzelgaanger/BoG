@@ -128,11 +128,15 @@
 
 @layer components {
   .dashboard-card {
-    @apply bg-card rounded-lg border border-border shadow-sm;
+    @apply bg-card rounded-lg border border-border shadow-sm transition-shadow duration-200;
+  }
+
+  .dashboard-card:hover {
+    @apply shadow-md;
   }
 
   .stat-card {
-    @apply dashboard-card p-5 transition-all duration-200 hover:shadow-md hover:border-accent/30;
+    @apply dashboard-card p-5 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5;
   }
 
   .stat-value {
@@ -152,7 +156,7 @@
   }
 
   .status-badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors;
   }
 
   .status-success {
@@ -180,7 +184,7 @@
   }
 
   .nav-item-active {
-    @apply nav-item bg-sidebar-accent text-sidebar-primary;
+    @apply nav-item bg-sidebar-accent text-sidebar-primary shadow-sm;
   }
 
   .nav-item-inactive {
@@ -198,10 +202,51 @@
   .section-title {
     @apply text-sm font-medium text-muted-foreground uppercase tracking-wider;
   }
+
+  /* Glass morphism effect for special cards */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm rounded-lg border border-border/50 shadow-lg;
+  }
+
+  /* Gradient text for emphasis */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  /* Animated border glow */
+  .glow-border {
+    @apply relative;
+  }
+
+  .glow-border::before {
+    content: '';
+    @apply absolute -inset-px rounded-lg bg-gradient-to-r from-accent/20 to-primary/20 -z-10 blur-sm;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Staggered animation delays for lists */
+  .stagger-1 { animation-delay: 50ms; }
+  .stagger-2 { animation-delay: 100ms; }
+  .stagger-3 { animation-delay: 150ms; }
+  .stagger-4 { animation-delay: 200ms; }
+  .stagger-5 { animation-delay: 250ms; }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-muted/30 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/40;
   }
 }
