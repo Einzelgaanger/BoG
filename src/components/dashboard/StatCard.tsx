@@ -1,5 +1,6 @@
 import { LucideIcon, TrendingUp, TrendingDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useAnimatedCounter } from '@/hooks/useAnimatedCounter';
 
 interface StatCardProps {
   title: string;
@@ -8,9 +9,22 @@ interface StatCardProps {
   change?: number;
   icon?: LucideIcon;
   variant?: 'default' | 'success' | 'warning' | 'danger';
+  animate?: boolean;
+  numericValue?: number;
 }
 
-export function StatCard({ title, value, subtitle, change, icon: Icon, variant = 'default' }: StatCardProps) {
+export function StatCard({ 
+  title, 
+  value, 
+  subtitle, 
+  change, 
+  icon: Icon, 
+  variant = 'default',
+  animate = false,
+  numericValue 
+}: StatCardProps) {
+  const animatedValue = useAnimatedCounter(numericValue || 0, 1200);
+  
   const variantStyles = {
     default: 'border-l-4 border-l-primary',
     success: 'border-l-4 border-l-success',
@@ -18,19 +32,42 @@ export function StatCard({ title, value, subtitle, change, icon: Icon, variant =
     danger: 'border-l-4 border-l-destructive',
   };
 
+  const iconBgStyles = {
+    default: 'bg-primary/10',
+    success: 'bg-success/10',
+    warning: 'bg-warning/10',
+    danger: 'bg-destructive/10',
+  };
+
+  const iconColorStyles = {
+    default: 'text-primary',
+    success: 'text-success',
+    warning: 'text-warning',
+    danger: 'text-destructive',
+  };
+
   return (
-    <div className={cn('stat-card', variantStyles[variant])}>
+    <div className={cn(
+      'stat-card group transition-all duration-300',
+      variantStyles[variant],
+      'hover:shadow-lg hover:-translate-y-0.5'
+    )}>
       <div className="flex items-start justify-between">
         <div className="space-y-1">
           <p className="stat-label">{title}</p>
-          <p className="stat-value">{value}</p>
+          <p className="stat-value tracking-tight">
+            {animate && numericValue ? `$${animatedValue.toLocaleString()}` : value}
+          </p>
           {subtitle && (
             <p className="text-sm text-muted-foreground">{subtitle}</p>
           )}
         </div>
         {Icon && (
-          <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
-            <Icon className="w-5 h-5 text-muted-foreground" />
+          <div className={cn(
+            'w-10 h-10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110',
+            iconBgStyles[variant]
+          )}>
+            <Icon className={cn('w-5 h-5', iconColorStyles[variant])} />
           </div>
         )}
       </div>
