@@ -17,7 +17,7 @@ import { corridorData } from '@/data/mockData';
 import { ComminglingMap } from '@/components/dashboard/ComminglingMap';
 import { FXMarketSegments } from '@/components/dashboard/FXMarketSegments';
 import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
-import { CorridorFlowMap } from '@/components/dashboard/CorridorFlowMap';
+import { InteractiveWorldMap } from '@/components/dashboard/InteractiveWorldMap';
 
 const COLORS = {
   bank: 'hsl(222, 47%, 25%)',
@@ -83,10 +83,10 @@ export function CorridorsPage() {
             <div className="mb-6">
               <h3 className="module-header">Global Remittance Flow Map</h3>
               <p className="text-sm text-muted-foreground mt-1">
-                Interactive visualization of inbound remittance corridors to Ghana with volume indicators
+                Interactive world map with zoom, pan, and real-time corridor flow visualization
               </p>
             </div>
-            <CorridorFlowMap />
+            <InteractiveWorldMap />
           </div>
         </TabsContent>
 
