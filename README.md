@@ -1,4 +1,4 @@
-# BoG Remittance
+# Bank of Ghana Remittance
 
 ## Project info
 

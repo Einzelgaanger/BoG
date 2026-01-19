@@ -219,7 +219,7 @@ export const policyMarkers: PolicyMarker[] = [
     date: '2026-01-12',
     type: 'rate_change',
     title: 'Reference Rate Adjustment',
-    description: 'BoG reference rate aligned closer to market VWAP',
+    description: 'Bank of Ghana reference rate aligned closer to market VWAP',
     targetSegments: ['bank', 'remittance', 'fintech'],
     status: 'active',
   },

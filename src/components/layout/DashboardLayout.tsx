@@ -48,10 +48,12 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
         <div className="flex items-center gap-3 ml-4">
-          <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
-            <Shield className="w-5 h-5 text-accent-foreground" />
-          </div>
-          <span className="text-sidebar-foreground font-semibold">BoG Remittance</span>
+          <img 
+            src="/Bank of Ghana Logo.png" 
+            alt="Bank of Ghana" 
+            className="w-8 h-8 object-contain"
+          />
+          <span className="text-sidebar-foreground font-semibold">Bank of Ghana Remittance</span>
         </div>
       </div>
 
@@ -69,14 +71,19 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
             "flex items-center gap-3",
             collapsed && "lg:flex-col lg:gap-2"
           )}>
-            <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center shrink-0">
-              <Shield className="w-6 h-6 text-accent-foreground" />
-            </div>
+            <img 
+              src="/Bank of Ghana Logo.png" 
+              alt="Bank of Ghana" 
+              className={cn(
+                "w-10 h-10 object-contain shrink-0",
+                collapsed && "lg:w-8 lg:h-8"
+              )}
+            />
             <div className={cn(
               "transition-opacity duration-300",
               collapsed && "lg:hidden"
             )}>
-              <h1 className="text-sidebar-foreground font-bold text-lg">BoG</h1>
+              <h1 className="text-sidebar-foreground font-bold text-lg">Bank of Ghana</h1>
               <p className="text-sidebar-foreground/60 text-xs">Remittance Oversight</p>
             </div>
           </div>

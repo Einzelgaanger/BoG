@@ -78,7 +78,7 @@ const addHeader = (doc: jsPDF, config: ReportConfig, pageNum: number, totalPages
   doc.setFontSize(10);
   doc.setTextColor(...COLORS.dark);
   doc.setFont('helvetica', 'bold');
-  doc.text('BoG', 20, 19, { align: 'center' });
+  doc.text('Bank of Ghana', 20, 19, { align: 'center' });
 
   // Title
   doc.setTextColor(...COLORS.white);
@@ -137,7 +137,7 @@ export const generateExecutiveSummaryReport = () => {
     title: 'FX & Remittance Transparency Report',
     subtitle: 'Executive Summary - Bank of Ghana Regulatory Dashboard',
     reportingPeriod: 'January 2024 Week 2',
-    generatedBy: 'BoG Remittance Oversight Division',
+    generatedBy: 'Bank of Ghana Remittance Oversight Division',
   };
 
   addHeader(doc, config, 1, 3);
@@ -328,7 +328,7 @@ export const generateFXMarketReport = () => {
     title: 'FX Market Transparency Report',
     subtitle: 'VWAP, Spreads, and Market Activity Analysis',
     reportingPeriod: 'January 2024 Week 2',
-    generatedBy: 'BoG FX Surveillance Unit',
+    generatedBy: 'Bank of Ghana FX Surveillance Unit',
   };
 
   addHeader(doc, config, 1, 2);
@@ -455,7 +455,7 @@ export const generateComplianceReport = () => {
     title: 'Institutional Compliance Report',
     subtitle: 'Licensed Institution Performance & Data Quality Assessment',
     reportingPeriod: 'January 2024 Week 2',
-    generatedBy: 'BoG Compliance Division',
+    generatedBy: 'Bank of Ghana Compliance Division',
   };
 
   addHeader(doc, config, 1, 1);
@@ -498,7 +498,7 @@ export const generateSettlementReport = () => {
     title: 'Settlement & Reconciliation Report',
     subtitle: 'End-to-End Transaction Settlement Analysis',
     reportingPeriod: 'January 2024 Week 2',
-    generatedBy: 'BoG Settlement Operations',
+    generatedBy: 'Bank of Ghana Settlement Operations',
   };
 
   addHeader(doc, config, 1, 1);
@@ -550,7 +550,7 @@ export const generateCorridorReport = () => {
     title: 'Corridor & Channel Analysis',
     subtitle: 'Remittance Flow by Source Country and Payment Channel',
     reportingPeriod: 'January 2024 Week 2',
-    generatedBy: 'BoG Remittance Analytics',
+    generatedBy: 'Bank of Ghana Remittance Analytics',
   };
 
   addHeader(doc, config, 1, 1);
