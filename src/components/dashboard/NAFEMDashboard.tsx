@@ -52,9 +52,6 @@ export function NAFEMDashboard() {
             </div>
             <div>
               <h2 className="text-xl font-bold">Market Intelligence Dashboard</h2>
-              <p className="text-sm text-muted-foreground">
-                NAFEM-equivalent FX Market Analysis • Based on Central Bank Methodology
-              </p>
             </div>
           </div>
           <div className="text-right">

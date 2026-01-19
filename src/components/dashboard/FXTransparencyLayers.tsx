@@ -79,16 +79,6 @@ export function FXTransparencyLayers() {
 
   return (
     <div className="space-y-6">
-      {/* Header with Philosophy */}
-      <div className="p-4 rounded-lg bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10 border border-primary/20">
-        <p className="text-sm font-medium text-center italic">
-          "We are not selling software. We are selling a policy learning system for FX stability."
-        </p>
-        <p className="text-xs text-muted-foreground text-center mt-1">
-          Makes informal flows visible without criminalizing them • Optimizes for net impact on stability, not perfection
-        </p>
-      </div>
-
       {/* Layer Navigation */}
       <Tabs value={activeLayer} onValueChange={setActiveLayer}>
         <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 gap-1">
