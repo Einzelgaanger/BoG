@@ -162,22 +162,6 @@ export function ReportsPage() {
           </div>
         ))}
       </div>
-
-      {/* Compliance Note */}
-      <div className="dashboard-card p-6">
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 rounded-lg bg-success/10 flex items-center justify-center">
-            <CheckCircle className="w-5 h-5 text-success" />
-          </div>
-          <div>
-            <h4 className="font-semibold text-foreground mb-1">Data Compliance</h4>
-            <p className="text-sm text-muted-foreground">
-              All reports are generated using post-trade, anonymized, aggregated data. 
-              No counterparty names are disclosed. Reports reflect validated institutional submissions only.
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

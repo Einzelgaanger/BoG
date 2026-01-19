@@ -342,13 +342,6 @@ export function ReturnsCompliance() {
           </div>
         </div>
       )}
-
-      {/* Demo Cue */}
-      <div className="p-4 rounded-lg bg-info/10 border border-info/30 text-center">
-        <p className="text-sm text-info font-medium">
-          🔍 Truth Layer: "Show what is visible, what is missing, and whether it can be trusted"
-        </p>
-      </div>
     </div>
   );
 }

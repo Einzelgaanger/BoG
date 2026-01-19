@@ -185,7 +185,6 @@ export function NAFEMDashboard() {
                 <p className="text-xs text-muted-foreground mb-1">{item.metric}</p>
                 <p className="text-2xl font-bold">{typeof item.value === 'number' ? item.value.toFixed(2) : item.value}</p>
                 <p className="text-xs text-accent mt-1">{item.market}</p>
-                <p className="text-xs text-muted-foreground mt-2 italic">{item.significance}</p>
               </div>
             ))}
           </div>
@@ -311,7 +310,6 @@ export function NAFEMDashboard() {
                     <span className="text-lg font-bold">{metric.score}</span>
                   </div>
                   <p className="text-xs text-muted-foreground mt-2">{metric.description}</p>
-                  <p className="text-xs text-accent mt-1 italic">→ {metric.recommendation}</p>
                 </div>
               ))}
             </div>
@@ -352,7 +350,6 @@ export function NAFEMDashboard() {
                         {source.reliability}
                       </span>
                     </div>
-                    <p className="text-xs text-accent mt-2 italic">→ {source.policyImplication}</p>
                   </div>
                 ))}
               </div>
@@ -386,7 +383,6 @@ export function NAFEMDashboard() {
                         {category.priority}
                       </span>
                     </div>
-                    <p className="text-xs text-accent mt-2 italic">→ {category.policyImplication}</p>
                   </div>
                 ))}
               </div>
@@ -441,16 +437,6 @@ export function NAFEMDashboard() {
           </div>
         </div>
       )}
-
-      {/* Footer Principle */}
-      <div className="p-4 rounded-lg bg-muted/30 border border-dashed border-border text-center">
-        <p className="text-sm text-muted-foreground italic">
-          "Data and Transparency are the Key Pillars for Unlocking the Full Potential of the Remittance Sector"
-        </p>
-        <p className="text-xs text-muted-foreground mt-1">
-          Post-trade • Anonymized • Aggregated • Policy-Enabling
-        </p>
-      </div>
     </div>
   );
 }

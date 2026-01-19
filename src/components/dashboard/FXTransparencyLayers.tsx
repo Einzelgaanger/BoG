@@ -79,7 +79,6 @@ export function FXTransparencyLayers() {
 
   return (
     <div className="space-y-6">
-      {/* Layer Navigation */}
       <Tabs value={activeLayer} onValueChange={setActiveLayer}>
         <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 gap-1">
           <TabsTrigger value="layer0" className="text-xs gap-1">
@@ -108,7 +107,6 @@ export function FXTransparencyLayers() {
           </TabsTrigger>
         </TabsList>
 
-        {/* LAYER 0: DATA TRUTH */}
         <TabsContent value="layer0" className="space-y-6 mt-6">
           <div className="dashboard-card p-6">
             <div className="flex items-center gap-3 mb-2">
@@ -117,16 +115,10 @@ export function FXTransparencyLayers() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Layer 0 — Data Truth (Foundational)</h3>
-                <p className="text-sm text-muted-foreground italic">"Am I seeing reality — or only a subset of reality?"</p>
               </div>
-            </div>
-            <div className="p-3 rounded-lg bg-accent/10 border-l-4 border-accent mt-4">
-              <p className="text-sm font-medium">Key Insight: If it is not declared, it does not exist to policy.</p>
-              <p className="text-xs text-muted-foreground mt-1">The first win is not analysis — it is increasing declared flows.</p>
             </div>
           </div>
 
-          {/* Visibility Metrics */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="dashboard-card p-4">
               <p className="text-xs text-muted-foreground">Declared Flows</p>
@@ -151,7 +143,6 @@ export function FXTransparencyLayers() {
             </div>
           </div>
 
-          {/* Mandatory Returns Sources */}
           <div className="dashboard-card p-6">
             <h4 className="text-sm font-semibold mb-4">Mandatory Returns Sources</h4>
             <div className="space-y-3">
@@ -176,7 +167,6 @@ export function FXTransparencyLayers() {
           </div>
         </TabsContent>
 
-        {/* LAYER 1: PRICE STABILITY LENS */}
         <TabsContent value="layer1" className="space-y-6 mt-6">
           <div className="dashboard-card p-6">
             <div className="flex items-center gap-3 mb-2">
@@ -185,15 +175,10 @@ export function FXTransparencyLayers() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Layer 1 — Market Price Stability Lens (Governor View)</h3>
-                <p className="text-sm text-muted-foreground italic">"Is the FX system stable or unstable — and why?"</p>
               </div>
             </div>
-            <p className="text-xs text-muted-foreground mt-2">
-              No transaction lists. No noise. Depends primarily on returns + reference feeds.
-            </p>
           </div>
 
-          {/* Stability Score */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="dashboard-card p-4 border-success/30 bg-success/5">
               <p className="text-xs text-muted-foreground">Stability Score</p>
@@ -220,7 +205,6 @@ export function FXTransparencyLayers() {
             </div>
           </div>
 
-          {/* Price Band Chart */}
           <div className="dashboard-card p-6">
             <h4 className="text-sm font-semibold mb-4">Historical FX Buy/Sell Bands</h4>
             <div className="h-64">
@@ -266,7 +250,6 @@ export function FXTransparencyLayers() {
             </div>
           </div>
 
-          {/* Cross-Country Benchmarks */}
           <div className="dashboard-card p-6">
             <h4 className="text-sm font-semibold mb-4 flex items-center gap-2">
               <Globe size={14} />
@@ -306,7 +289,6 @@ export function FXTransparencyLayers() {
           </div>
         </TabsContent>
 
-        {/* LAYER 2: SEGMENT FLOW DECOMPOSITION */}
         <TabsContent value="layer2" className="space-y-6 mt-6">
           <div className="dashboard-card p-6">
             <div className="flex items-center gap-3 mb-2">
@@ -315,18 +297,10 @@ export function FXTransparencyLayers() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Layer 2 — Segment Flow Decomposition (Diagnostic)</h3>
-                <p className="text-sm text-muted-foreground italic">"Which segments are driving demand, supply, or leakage?"</p>
               </div>
-            </div>
-            <div className="p-3 rounded-lg bg-warning/10 border-l-4 border-warning mt-4">
-              <p className="text-sm font-medium">Critical Insight</p>
-              <p className="text-xs text-muted-foreground mt-1">
-                Any system that aggregates "FX" without segment differentiation will mislead policymakers.
-              </p>
             </div>
           </div>
 
-          {/* Segment Summary */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="dashboard-card p-4 border-success/30">
               <p className="text-xs text-muted-foreground">Total Supply</p>
@@ -346,7 +320,6 @@ export function FXTransparencyLayers() {
             </div>
           </div>
 
-          {/* Segments Detail */}
           <div className="dashboard-card p-6">
             <h4 className="text-sm font-semibold mb-4">FX Market Segments</h4>
             <div className="space-y-3">
@@ -405,7 +378,6 @@ export function FXTransparencyLayers() {
           </div>
         </TabsContent>
 
-        {/* LAYER 3: POLICY MARKER & ATTRIBUTION */}
         <TabsContent value="layer3" className="space-y-6 mt-6">
           <div className="dashboard-card p-6">
             <div className="flex items-center gap-3 mb-2">
@@ -414,16 +386,10 @@ export function FXTransparencyLayers() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Layer 3 — Policy Marker & Attribution Engine</h3>
-                <p className="text-sm text-muted-foreground italic">"Did our policy work — and where did it fail?"</p>
               </div>
-            </div>
-            <div className="p-3 rounded-lg bg-success/10 border-l-4 border-success mt-4">
-              <p className="text-sm font-medium">"When I issue a policy, I should see its effect in the data."</p>
-              <p className="text-xs text-muted-foreground mt-1">This layer turns the dashboard into a learning system. Rare globally.</p>
             </div>
           </div>
 
-          {/* Active Policies */}
           <div className="dashboard-card p-6">
             <h4 className="text-sm font-semibold mb-4">Active Policy Markers</h4>
             <div className="space-y-3">
@@ -454,7 +420,6 @@ export function FXTransparencyLayers() {
             </div>
           </div>
 
-          {/* Policy Impact Assessment */}
           <div className="dashboard-card p-6">
             <h4 className="text-sm font-semibold mb-4">Before/After Impact Assessment</h4>
             <div className="space-y-4">
@@ -507,7 +472,6 @@ export function FXTransparencyLayers() {
             </div>
           </div>
 
-          {/* Elasticity Indicators */}
           <div className="dashboard-card p-6">
             <h4 className="text-sm font-semibold mb-4">Segment Elasticity (Who Responded, Who Didn't)</h4>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -535,7 +499,6 @@ export function FXTransparencyLayers() {
           </div>
         </TabsContent>
 
-        {/* LAYER 4: LEAKAGE & DIAGNOSTICS */}
         <TabsContent value="layer4" className="space-y-6 mt-6">
           <div className="dashboard-card p-6">
             <div className="flex items-center gap-3 mb-2">
@@ -544,18 +507,10 @@ export function FXTransparencyLayers() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Layer 4 — Compliance, Leakage & Incentive Diagnostics</h3>
-                <p className="text-sm text-muted-foreground italic">"Where is the system being gamed?"</p>
               </div>
-            </div>
-            <div className="p-3 rounded-lg bg-warning/10 border-l-4 border-warning mt-4">
-              <p className="text-sm font-medium">Important: This layer is NOT enforcement. It is policy friction detection.</p>
-              <p className="text-xs text-muted-foreground mt-1">
-                If everyone is circumventing the system, the policy is wrong — not the users.
-              </p>
             </div>
           </div>
 
-          {/* Leakage Indicators */}
           <div className="dashboard-card p-6">
             <h4 className="text-sm font-semibold mb-4">Leakage Indicators</h4>
             <div className="space-y-3">
@@ -598,7 +553,6 @@ export function FXTransparencyLayers() {
             </div>
           </div>
 
-          {/* Compliance Frictions */}
           <div className="dashboard-card p-6">
             <h4 className="text-sm font-semibold mb-4">Policy Friction Points (Why Participants Struggle)</h4>
             <div className="space-y-3">
@@ -624,7 +578,6 @@ export function FXTransparencyLayers() {
           </div>
         </TabsContent>
 
-        {/* LAYER 5: INTERVENTION READINESS */}
         <TabsContent value="layer5" className="space-y-6 mt-6">
           <div className="dashboard-card p-6">
             <div className="flex items-center gap-3 mb-2">
@@ -633,18 +586,10 @@ export function FXTransparencyLayers() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Layer 5 — Intervention Readiness (Not Intervention Itself)</h3>
-                <p className="text-sm text-muted-foreground italic">"If we intervene, where, how much, and why?"</p>
               </div>
-            </div>
-            <div className="p-3 rounded-lg bg-primary/10 border-l-4 border-primary mt-4">
-              <p className="text-sm font-medium">The system must NOT intervene — it must INFORM intervention.</p>
-              <p className="text-xs text-muted-foreground mt-1">
-                Trading feeds the dashboard. The dashboard never "talks back" in real time.
-              </p>
             </div>
           </div>
 
-          {/* Current Status */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <div className={`dashboard-card p-4 ${
               interventionReadinessSummary.currentRecommendation === 'Monitor' 
@@ -668,7 +613,6 @@ export function FXTransparencyLayers() {
             </div>
           </div>
 
-          {/* Liquidity Stress by Segment */}
           <div className="dashboard-card p-6">
             <h4 className="text-sm font-semibold mb-4">Segment-Specific Supply Gaps</h4>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -699,7 +643,6 @@ export function FXTransparencyLayers() {
             </div>
           </div>
 
-          {/* Intervention Scenarios */}
           <div className="dashboard-card p-6">
             <h4 className="text-sm font-semibold mb-4">Intervention Simulation Scenarios ("What if we add $X?")</h4>
             <div className="space-y-3">
@@ -733,31 +676,6 @@ export function FXTransparencyLayers() {
           </div>
         </TabsContent>
       </Tabs>
-
-      {/* Clean Separation Footer */}
-      <div className="p-4 rounded-lg bg-muted/30 border border-dashed border-border">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 text-sm">
-          <div>
-            <p className="font-medium mb-2">The EFEM / Trading Tool:</p>
-            <ul className="text-xs text-muted-foreground space-y-1">
-              <li>• Executes interventions</li>
-              <li>• Matches willing buyers/sellers</li>
-              <li>• Settles FX</li>
-            </ul>
-          </div>
-          <div>
-            <p className="font-medium mb-2">This Dashboard:</p>
-            <ul className="text-xs text-muted-foreground space-y-1">
-              <li>• Observes outcomes</li>
-              <li>• Measures effectiveness</li>
-              <li>• Guides future action</li>
-            </ul>
-          </div>
-        </div>
-        <p className="text-xs text-center text-muted-foreground mt-4 italic">
-          One-way dependency: Trading feeds the dashboard. The dashboard never "talks back" in real time.
-        </p>
-      </div>
     </div>
   );
 }

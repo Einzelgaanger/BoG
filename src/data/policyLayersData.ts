@@ -1,13 +1,3 @@
-// Policy Learning System for FX Stability - 5-Layer Architecture
-// "We are not selling software. We are selling a policy learning system for FX stability."
-// Critical rule: No counterparty names. Ever.
-
-// ==============================================================================
-// LAYER 0: DATA TRUTH (Foundational, Non-Negotiable)
-// Question: "Am I seeing reality — or only a subset of reality?"
-// Key insight: "If it is not declared, it does not exist to policy."
-// ==============================================================================
-
 export interface ReturnSubmissionSource {
   type: string;
   description: string;
@@ -70,12 +60,6 @@ export const dataVisibilityMetrics = {
   blindSpotEstimate: 81000000, // flows not captured
 };
 
-// ==============================================================================
-// LAYER 1: MARKET PRICE STABILITY LENS (Executive/Governor View)
-// Question: "Is the FX system stable or unstable — and why?"
-// This is the FIRST dashboard page. Everything else is secondary.
-// ==============================================================================
-
 export interface PriceStabilityBand {
   date: string;
   officialBuy: number;
@@ -122,12 +106,6 @@ export const stabilityLensSummary = {
   stabilityTrend: 'improving' as const,
   rollingWindow: '7-day',
 };
-
-// ==============================================================================
-// LAYER 2: SEGMENT FLOW DECOMPOSITION (Diagnostic Layer)
-// Question: "Which segments are driving demand, supply, or leakage?"
-// Insight: Any system that aggregates "FX" without segment differentiation will mislead policymakers.
-// ==============================================================================
 
 export interface FXSegment {
   id: string;
@@ -206,13 +184,6 @@ export const segmentContribution = {
   formalFlowShare: 78,
   parallelLeakage: 22,
 };
-
-// ==============================================================================
-// LAYER 3: POLICY MARKER & ATTRIBUTION ENGINE (Most Important Insight)
-// Question: "Did our policy work — and where did it fail?"
-// Insight: "When I issue a policy, I should see its effect in the data."
-// This turns the dashboard into a LEARNING SYSTEM.
-// ==============================================================================
 
 export interface PolicyMarker {
   id: string;
@@ -312,13 +283,6 @@ export const elasticityIndicators: ElasticityIndicator[] = [
   { segment: 'Crypto Off-ramps', responseLevel: 'low', volumeChange: 2.1, behaviorShift: 'Limited response' },
 ];
 
-// ==============================================================================
-// LAYER 4: COMPLIANCE, LEAKAGE & INCENTIVE DIAGNOSTICS (Quiet but deadly)
-// Question: "Where is the system being gamed?"
-// Important: This layer is NOT enforcement. It is policy friction detection.
-// Insight: If everyone is circumventing the system, the policy is wrong — not the users.
-// ==============================================================================
-
 export interface LeakageIndicator {
   type: string;
   description: string;
@@ -386,13 +350,6 @@ export const complianceFrictions: ComplianceFriction[] = [
     suggestedAction: 'Provide API toolkit',
   },
 ];
-
-// ==============================================================================
-// LAYER 5: INTERVENTION READINESS LAYER (Not intervention itself)
-// Question: "If we intervene, where, how much, and why?"
-// Critical: The system must NOT intervene — it must INFORM intervention.
-// The dashboard never "talks back" in real time. Trading feeds the dashboard.
-// ==============================================================================
 
 export interface LiquidityStressIndicator {
   segment: string;

@@ -52,7 +52,6 @@ const calculateStability = (): StabilityMetric => {
   return { score, status, volatility7d, volatility30d, spreadToParallel, volumeTrend };
 };
 
-// Generate auto-insights (simulating rule-based or LLM analysis)
 const generateTopDrivers = (): TopDriver[] => {
   return [
     {
@@ -283,10 +282,7 @@ export function FXStabilityCockpit() {
         <div className="dashboard-card p-6">
           <div className="flex items-center gap-3 mb-4">
             <Zap className="w-5 h-5 text-accent" />
-            <div>
-              <h3 className="font-semibold">Top Drivers</h3>
-              <p className="text-xs text-muted-foreground">Auto-generated insights</p>
-            </div>
+            <h3 className="font-semibold">Top Drivers</h3>
           </div>
 
           <div className="space-y-3">
@@ -357,16 +353,6 @@ export function FXStabilityCockpit() {
           <p className="text-lg font-bold text-success">None</p>
           <p className="text-xs text-muted-foreground">Not required</p>
         </div>
-      </div>
-
-      {/* Demo Cue Footer */}
-      <div className="p-4 rounded-lg bg-accent/10 border border-accent/30 text-center">
-        <p className="text-sm text-accent font-medium">
-          🎯 Governor View: "In 10 seconds — Stable/Not Stable + Why"
-        </p>
-        <p className="text-xs text-muted-foreground mt-1">
-          This cockpit answers: "Is FX stable today?" before any drill-down.
-        </p>
       </div>
     </div>
   );
